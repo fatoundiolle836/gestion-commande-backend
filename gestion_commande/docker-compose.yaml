@@ -26,7 +26,7 @@ services:
     container_name: backend-gestion-commande
     restart: always
     ports:
-      - "8080:8080"
+      - "8000:8000"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-gestion-commande-service:3306/db_gestion_commande?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: devops
