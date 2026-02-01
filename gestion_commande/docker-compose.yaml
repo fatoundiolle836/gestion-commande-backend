@@ -46,14 +46,14 @@ services:
     environment:
       PMA_HOST: mysql-gestion-commande-service
 
-  frontend-gestion-commande-service:
-    image: ${FRONTEND_IMAGE}:${FRONTEND_TAG}
-    container_name: frontend-gestion-commande
-    restart: always
-    ports:
-      - "4200:80"
-    depends_on:
-      - backend-gestion-commande-service
+#  frontend-gestion-commande-service:
+#    image: ${FRONTEND_IMAGE}:${FRONTEND_TAG}
+#    container_name: frontend-gestion-commande
+#    restart: always
+#    ports:
+#      - "4200:80"
+#    depends_on:
+#      - backend-gestion-commande-service
 
 volumes:
   mysql_gestion_commande_data:
