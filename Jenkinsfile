@@ -17,7 +17,7 @@ pipeline {
         stage('Build Backend Docker Image') {
             steps {
                 script {
-                    bat "docker build -t %BACKEND_IMAGE%:%BACKEND_TAG% ."
+                    sh "docker build -t ${BACKEND_IMAGE}:${BACKEND_TAG} ."
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         stage('Deploy with Docker Compose') {
             steps {
                 script {
-                    bat "docker-compose up -d --build"
+                    sh "docker compose up -d --build"
                 }
             }
         }
