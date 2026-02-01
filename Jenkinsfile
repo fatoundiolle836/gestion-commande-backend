@@ -17,7 +17,7 @@ pipeline {
         stage('Build Backend Docker Image') {
             steps {
                 script {
-                    bat "docker build -t %BACKEND_IMAGE%:%BACKEND_TAG% ."
+                    bat "docker build -t %BACKEND_IMAGE%:%BACKEND_TAG% ./gestion_commande"
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         stage('Deploy with Docker Compose') {
             steps {
                 script {
-                    bat "docker-compose up -d --build"
+                    bat "docker-compose -f ./gestion_commande/docker-compose.yaml up -d --build"
                 }
             }
         }
