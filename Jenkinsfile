@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent { label 'agent-windows' }
 
     environment {
         DOCKERHUB_USER = "encvr1"
-        BACKEND_IMAGE  = "${DOCKERHUB_USER}/backend-courrier"
+        BACKEND_IMAGE  = "${DOCKERHUB_USER}/backend-commande"
         BACKEND_TAG    = "1.${BUILD_NUMBER}"
     }
 
@@ -17,7 +17,7 @@ pipeline {
         stage('Build Backend Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${BACKEND_IMAGE}:${BACKEND_TAG} ."
+                    bat "docker build -t %BACKEND_IMAGE%:%BACKEND_TAG% ."
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         stage('Deploy with Docker Compose') {
             steps {
                 script {
-                    sh "docker compose up -d --build"
+                    bat "docker-compose up -d --build"
                 }
             }
         }
