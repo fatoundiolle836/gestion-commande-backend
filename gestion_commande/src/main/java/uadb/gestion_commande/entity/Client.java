@@ -31,6 +31,10 @@ public class Client {
 
     private String pays;
 
+    // ✅ Champ email ajouté
+    @Column(name = "email")
+    private String email;
+
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Commande> commandes = new ArrayList<>();
 }
